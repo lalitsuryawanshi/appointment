@@ -16,9 +16,7 @@ public class Engineer extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     private String name;
-
-    @ManyToOne
-    private Appointment appointment;
 
 }

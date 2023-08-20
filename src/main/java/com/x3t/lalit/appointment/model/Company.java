@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Customer extends BaseEntity implements Serializable {
+public class Company extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

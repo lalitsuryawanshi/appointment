@@ -61,9 +61,6 @@ public class CustomerServiceImpl implements CustomerService {
         if(OptionalCustomer.isPresent()){
             Customer found = customerRepository.findById(Long.valueOf(id)).get();
             found.setName(received.getName());
-            found.setEmail(received.getEmail());
-            found.setPhone(received.getPhone());
-            found.setAddress(received.getAddress());
 
             updated = customerRepository.save(found);
         }
