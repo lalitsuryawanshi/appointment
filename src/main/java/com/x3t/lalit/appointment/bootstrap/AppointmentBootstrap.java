@@ -43,16 +43,15 @@ public class AppointmentBootstrap implements ApplicationListener<ContextRefreshe
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
+        List<SharedCalendar> cals = populateCalendar();
+        sharedCalendarRepository.saveAll(cals);
+
+        SharedCalendar calendarDate = sharedCalendarRepository.findById(1L).get();
+
         List<Company> companyList = companyRepository.saveAll(getCompanies());
         List<Customer> customers = customerRepository.saveAll(getCustomers());
         List<Engineer> engineers = engineerRepository.saveAll(getEngineers());
 
-        List<SharedCalendar> sharedCalendars =  sharedCalendarRepository.saveAll(populateCalendar());
-        //TODO - AppointmentDate
-        //TODO - Appointment
-
-        //AppointmentDate aptDate = new AppointmentDate();
-        SharedCalendar calendarDate = sharedCalendarRepository.findById(1L).get();
 
         AppointmentDate appointmentDate = new AppointmentDate();
         appointmentDate.setCalendarDate(calendarDate);
@@ -70,15 +69,14 @@ public class AppointmentBootstrap implements ApplicationListener<ContextRefreshe
 
         calendarDate.setCalendarDate(appointmentDate.getCalendarDate().getCalendarDate());
 
-        List<Appointment> appointmentList = new ArrayList<>();
-        appointmentList.add(appointment);
-
-
-        //appointmentDate.setAppointments((Set<Appointment>) appointmentList);
+        appointmentDate.setCalendarDate(calendarDate);
 
         appointmentDate = appointmentDateRepository.save(appointmentDate);
 
-        System.out.println("Appointment Date : "+appointmentDate.getAppointments().toString());
+        appointment.setAppointmentDate(appointmentDate);
+        appointment = appointmentRepository.save(appointment);
+
+        System.out.println("Appointment : "+appointment.getId());
     }
 
     private List<Company> getCompanies() {
