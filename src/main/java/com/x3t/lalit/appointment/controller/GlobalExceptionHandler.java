@@ -15,55 +15,31 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.x3t.lalit.appointment.utils.ResponseEntityBuilder.buildApiError;
+
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    //TODO need to refactor to reduce repeating code
     @ExceptionHandler(CompanyNotFoundException.class)
     public ResponseEntity<Object> handleCompanyNotFoundException(
             CompanyNotFoundException ex) {
 
-        List<String> details = new ArrayList<String>();
-        details.add(ex.getMessage());
-
-        ApiError err = new ApiError(
-                LocalDateTime.now(),
-                HttpStatus.NOT_FOUND,
-                "Company Not Found" ,
-                details);
-
-        return ResponseEntityBuilder.build(err);
+        return ResponseEntityBuilder.build(buildApiError(ex, "Company not Found"));
     }
 
     @ExceptionHandler(EngineerNotFoundException.class)
     public ResponseEntity<Object> handleEngineerNotFoundException(
             EngineerNotFoundException ex) {
 
-        List<String> details = new ArrayList<String>();
-        details.add(ex.getMessage());
-
-        ApiError err = new ApiError(
-                LocalDateTime.now(),
-                HttpStatus.NOT_FOUND,
-                "Engineer Not Found" ,
-                details);
-
-        return ResponseEntityBuilder.build(err);
+        return ResponseEntityBuilder.build(buildApiError(ex, "Engineer not Found"));
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
     public ResponseEntity<Object> handleCustomerNotFoundException(
             CustomerNotFoundException ex) {
 
-        List<String> details = new ArrayList<String>();
-        details.add(ex.getMessage());
-
-        ApiError err = new ApiError(
-                LocalDateTime.now(),
-                HttpStatus.NOT_FOUND,
-                "Customer Not Found" ,
-                details);
-
-        return ResponseEntityBuilder.build(err);
+        return ResponseEntityBuilder.build(buildApiError(ex, "Customer not Found"));
     }
+
+
 }
