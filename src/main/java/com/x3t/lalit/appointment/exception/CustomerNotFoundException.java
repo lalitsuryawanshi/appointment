@@ -10,6 +10,4 @@ public class CustomerNotFoundException extends RuntimeException {
         super(message);
     }
 
-    public CustomerNotFoundException() {
-    }
 }

@@ -9,6 +9,4 @@ public class EngineerNotFoundException extends RuntimeException {
         super(message);
     }
 
-    public EngineerNotFoundException(){
-    }
 }
