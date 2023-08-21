@@ -12,6 +12,7 @@ import java.util.Set;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=false)
+@ToString
 public class SharedCalendar extends BaseEntity implements Serializable {
 
     @Id

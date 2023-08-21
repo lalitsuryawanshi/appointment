@@ -1,10 +1,7 @@
 package com.x3t.lalit.appointment.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -15,6 +12,7 @@ import java.util.Set;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=false)
+@ToString
 public class AppointmentDate extends BaseEntity implements Serializable {
 
     @Id

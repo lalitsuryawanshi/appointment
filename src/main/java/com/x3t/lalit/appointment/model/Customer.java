@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper=false)
+@ToString
 public class Customer extends BaseEntity implements Serializable {
 
     @Id

@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
+@ToString
 public class Appointment extends BaseEntity implements Serializable {
 
     @Id
